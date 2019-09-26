@@ -1,0 +1,7 @@
+<h1>Welcome Back!</h1>
+<%= form_tag login_path do %>
+<%= label_tag :for, "email" %>
+<%= text_field_tag :"user[email]" %>
+<%= label_tag :for, "password" %>
+<%= text_field_tag :"user[password]" %>
+<% end %>
