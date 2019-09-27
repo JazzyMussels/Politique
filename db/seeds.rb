@@ -12,9 +12,11 @@ Policy.destroy_all
 Scandal.destroy_all
 Debate.destroy_all
 
+
+#username: , password: ,
 puts 'seeding data'
 #politicians 1 - 11
-User.create(name: 'Bill Clinton', age: 70, race: 'White', gender: 'M', location: 'Iowa', title: 'President', politician: true, running_mate: 'Al Gore', level: 10)
+User.create(name: 'Bill Clinton',  age: 70, race: 'White', gender: 'M', location: 'Iowa', title: 'President', politician: true, running_mate: 'Al Gore', level: 10)
 User.create(name: 'George Bush', age: 80, race: 'White', gender: 'M', location: 'Texas', title: 'President', politician: true, running_mate: 'Al Gore', level: 10)
 User.create(name: 'Donald Trump', age: 90, race: 'White', gender: 'M', location: 'New York', title: 'President', politician: true, running_mate: 'Al Gore', level: 10)
 User.create(name: 'Barack Obama', age: 60, race: 'Mixed', gender: 'M', location: 'Illinois', title: 'President', politician: true, running_mate: 'Al Gore', level: 10)
@@ -44,7 +46,7 @@ User.create(name: 'Ron', age: 90, race: 'White', gender: 'M', location: 'Arizona
 User.create(name: 'Hermione', age: 90, race: 'White', gender: 'M', location: 'Arizona')
 User.create(name: 'Paul', age: 90, race: 'White', gender: 'M', location: 'Arizona')
 User.create(name: 'Red', age: 90, race: 'White', gender: 'M', location: 'Arizona')
-User.create(name: 'Timmy', age: 90, race: 'White', gender: 'M', location: 'Arizona')
+User.create(name: 'Timmy',age: 90, race: 'White', gender: 'M', location: 'Arizona')
 
 Party.create(name: 'Republican', party_type: 'Conservative')
 Party.create(name: 'Democrat', party_type: 'Liberal')

@@ -1,8 +1,20 @@
 class PoliciesController < ApplicationController
+  before_action :find_policy, only: [:show, :edit, :update, :destroy]
   def index
+    @policies = Policy.all 
   end
 
   def new
+    @policy = Policy.new 
+  end
+
+  def create
+    @policy = Policy.new(policy_params)
+      if @policy.save 
+        redirect_to policy_path 
+      else
+        render :new 
+      end
   end
 
   def show
@@ -10,4 +22,29 @@ class PoliciesController < ApplicationController
 
   def edit
   end
+
+  def update 
+    if @policy.update(policy_params)
+      redirect_to policy_path 
+    else
+      render :edit 
+    end
+  end
+
+  def destroy
+    @policy.destroy 
+    redirect_to policys_path 
+  end
+
+
+  private
+
+  def find_policy
+    @policy = Policy.find(params[:id])
+  end
+
+  def policy_params 
+    params.require(:policy).permit(:title, :content, :user_id)
+  end
+
 end

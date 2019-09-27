@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   
   get "/login", to: "users#login", as: :login
   post "/login", to: "users#authenticate"
-  
+  get '/users/new_voter', to: 'users#new_voter', as: :new_voter
+  get '/users/new_politician', to: 'users#new_politician', as: :new_politician
+
+
   resources :debates
   resources :scandals
   resources :parties

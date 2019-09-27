@@ -1,2 +1,28 @@
-<h1>Politicians#show</h1>
-<p>Find me in app/views/politicians/show.html.erb</p>
+
+<% if @user.is_politician? %>
+<h1><%= @user.name %></h1>
+<%= image_tag @user.photo %>
+<h2> Title: <%= @user.title %></h2>
+<h3>Candidate Biography</h3>
+<p> <%= @user.bio %> </p>
+<p> Age: <%= @user.age %> </p>
+<p> Race: <%= @user.race %> </p>
+<p> Gender: <%= @user.gender %> </p>
+<p> Location: <%= @user.location %> </p>
+<p> Running Mate: <%= @user.running_mate_name %> </p>
+<%= image_tag @user.running_mate_photo %>
+<p> You can reach <%= @user.name %> by sending an e-mail to: <%= @user.email %>
+<%= link_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
+<% else %>
+
+<h1><%= @user.name %></h1>
+<%= image_tag @user.photo %>
+<h3>Personal Biography</h3>
+<p> <%= @user.bio %> </p>
+<p> Age: <%= @user.age %> </p>
+<p> Race: <%= @user.race %> </p>
+<p> Gender: <%= @user.gender %> </p>
+<p> Location: <%= @user.location %> </p>
+<%= link_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
+<%end%>
+

@@ -1,6 +1,8 @@
-<h1>Update Your Information</h1>
+<h1>Become A Politician</h1>
+
 
 <%= form_for @user do |f| %>
+<%= f.hidden_field :politician, value: true %>
 <%= f.label :email, "Please Enter a Valid e-mail Address!" %><br>
 <%= f.text_field :email %><br>
 <%= f.label :password, "Please Enter a 5 digit password!" %><br>
@@ -23,16 +25,9 @@ Nebraska Nevada New\ Hampshire New\ Jersey New\ Mexico New\ York North\ Carolina
 North\ Dakota Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina
 South\ Dakota Tennessee Texas Utah Vermont Virginia Washington West\ Virginia
 Wisconsin Wyoming)) %><br>
-<% if @user.is_politician? %>
-<%= f.label :title, "What Is Your Current Title?" %><br>
-<%= f.select :title,  options_for_select([ 'Law Abiding Citizen', 'City Councillor', 'Mayor', 'State Representative', 'House Representative', 'Senator', 'President']) %><br>
-<%= f.label :running_mate_name, "Tell Us Your Running Mate's Name" %><br>
-<%= f.text_field :running_mate_name %><br>
-<%= f.label :running_mate_photo, "Upload A Picture of Your Running Mate!" %><br>
-<%= f.text_field :running_mate_photo %><br>
-<% end %>
+
 <%= f.label :bio, "Tell Us Your Story!" %><br>
 <%= f.text_area :bio %><br>
 <%= f.submit %>
-<% end %>
 
+<% end %>

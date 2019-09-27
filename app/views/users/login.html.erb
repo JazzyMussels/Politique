@@ -1,7 +1,15 @@
-<h1>Welcome Back!</h1>
+<h1>Welcome to our Site!</h1>
+<h2> Please enter your e-mail and password</h2>
 <%= form_tag login_path do %>
 <%= label_tag :for, "email" %>
 <%= text_field_tag :"user[email]" %>
 <%= label_tag :for, "password" %>
 <%= text_field_tag :"user[password]" %>
+<%= submit_tag 'Log-in' %>
 <% end %>
+
+<h2>If you are a new voter, you can register here!</h2><br>
+<%= link_to  "Create an Account", new_voter_path %><br>
+<h2>If you are a new politician, you can start ruining lives here!</h2><br>
+<%= link_to  "Create an Account", new_politician_path %><br>
+
