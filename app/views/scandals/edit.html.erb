@@ -1,2 +1,10 @@
-<h1>Scandals#edit</h1>
-<p>Find me in app/views/scandals/edit.html.erb</p>
+<h1>Change The Story</h1><br>
+<%= form_for @scandal do |f| %><br>
+<%= f.label :title, "Scandal Title" %><br>
+<%= f.text_field :title %><br>
+<%= f.label :content, "Whistleblow This MoFo" %><br>
+<%= f.text_area :content %><br>
+<%= f.label :photographic_evidence, "Let's See Some Proof!" %><br>
+<%= f.text_field :photographic_evidence %><br>
+<%= f.submit %><br>
+<% end %>

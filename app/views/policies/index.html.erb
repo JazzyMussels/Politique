@@ -1,2 +1,4 @@
-<h1>Policiess#index</h1>
-<p>Find me in app/views/policiess/index.html.erb</p>
+<h1>THE ISSUES</h1>
+<% @policies.each do |s| %>
+<%= link_to  s.title,  policy_path(s) %><br>
+<% end %>

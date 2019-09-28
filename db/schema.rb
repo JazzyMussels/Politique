@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_185633) do
   create_table "parties", force: :cascade do |t|
     t.string "name"
     t.string "party_type"
+    t.text "bio"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

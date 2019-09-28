@@ -11,7 +11,7 @@ class PoliciesController < ApplicationController
   def create
     @policy = Policy.new(policy_params)
       if @policy.save 
-        redirect_to policy_path 
+        redirect_to @policy 
       else
         render :new 
       end
@@ -25,7 +25,7 @@ class PoliciesController < ApplicationController
 
   def update 
     if @policy.update(policy_params)
-      redirect_to policy_path 
+      redirect_to @policy 
     else
       render :edit 
     end
@@ -33,7 +33,7 @@ class PoliciesController < ApplicationController
 
   def destroy
     @policy.destroy 
-    redirect_to policys_path 
+    redirect_to policies_path 
   end
 
 

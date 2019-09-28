@@ -11,7 +11,7 @@ class PartiesController < ApplicationController
   def create
     @party = Party.new(party_params)
       if @party.save 
-        redirect_to party_path 
+        redirect_to @party 
       else
         render :new 
       end
@@ -25,7 +25,7 @@ class PartiesController < ApplicationController
 
   def update 
     if @party.update(party_params)
-      redirect_to party_path 
+      redirect_to @party 
     else
       render :edit 
     end
@@ -44,6 +44,6 @@ class PartiesController < ApplicationController
   end
 
   def party_params 
-    params.require(:party).permit(:name, :party_type, :user_id)
+    params.require(:party).permit(:name, :party_type, :bio, :user_id)
   end
 end

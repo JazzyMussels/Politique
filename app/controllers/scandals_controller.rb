@@ -11,7 +11,7 @@ class ScandalsController < ApplicationController
   def create
     @scandal = Scandal.new(scandal_params)
       if @scandal.save 
-        redirect_to scandal_path 
+        redirect_to @scandal 
       else
         render :new 
       end
@@ -25,7 +25,7 @@ class ScandalsController < ApplicationController
 
   def update 
     if @scandal.update(scandal_params)
-      redirect_to scandal_path 
+      redirect_to @scandal 
     else
       render :edit 
     end

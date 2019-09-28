@@ -1,2 +1,8 @@
-<h1>Policiess#new</h1>
-<p>Find me in app/views/policiess/new.html.erb</p>
+<h1>Policy Points</h1><br>
+<%= form_for @policy do |f| %><br>
+<%= f.label :title, "Policy Name:" %><br>
+<%= f.text_field :title %><br>
+<%= f.label :content, "What do you want to say about it?" %><br>
+<%= f.text_area :content %><br>
+<%= f.submit %><br>
+<% end %>
