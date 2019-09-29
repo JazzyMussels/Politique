@@ -11,8 +11,10 @@ class ScandalsController < ApplicationController
   def create
     @scandal = Scandal.new(scandal_params)
       if @scandal.save 
-        redirect_to @scandal 
+      flash[:success] = 'This Scandal is successfully going viral!'
+       redirect_to @scandal
       else
+        flash[:warning] = 'Something went wrong, please try again.'
         render :new 
       end
   end

@@ -2,4 +2,5 @@
 <p>Click a link below to see information about a party.</p>
 <% @parties.each do |p| %>
 <%= link_to  p.name, party_path(p) %>
-<% end %>
+<% end %><br>
+<%= link_to  "Back To Main Page", root_path %>

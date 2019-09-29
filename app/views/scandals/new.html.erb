@@ -8,4 +8,8 @@
 <%= f.text_field :photographic_evidence %><br>
 <%= f.submit %><br>
 <% end %>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %><br>
+<%= link_to  "Back", scandals_path %>
 
