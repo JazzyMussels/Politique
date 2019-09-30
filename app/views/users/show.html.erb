@@ -19,6 +19,7 @@
 <h1><%= @user.name %></h1>
 <%= image_tag @user.photo %>
 <h3>Personal Biography</h3>
+<p><%=session[:user_id]%></p>
 <p> <%= @user.bio %> </p>
 <p> Age: <%= @user.age %> </p>
 <p> Race: <%= @user.race %> </p>
@@ -27,4 +28,6 @@
 <%= link_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
 <%= link_to  "Back to All Voters", users_path %>
 <%end%>
-
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>

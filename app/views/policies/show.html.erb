@@ -1,3 +1,8 @@
 <h1><%= @policy.title %></h1>
 <p> <%= @policy.content %></p>
+<img src="<%= @policy.photo %>">
 <br>
+<%= link_to  "Add This Policy To Your Platform", user_path(User.find(session[:user_id])) %>
+<%= link_to  "Back to Policies Page", policies_path %>
+
+<h2> Here are all Politicians In Support of this Policy</h2>
