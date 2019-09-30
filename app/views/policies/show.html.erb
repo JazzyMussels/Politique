@@ -2,7 +2,12 @@
 <p> <%= @policy.content %></p>
 <img src="<%= @policy.photo %>">
 <br>
-<%= link_to  "Add This Policy To Your Platform", user_path(User.find(session[:user_id])) %>
+<%= button_to  "Add This Policy To Your Platform", user_path(@policy.link_policy_to_user(session[:user_id]), :method => :get) %>
 <%= link_to  "Back to Policies Page", policies_path %>
 
 <h2> Here are all Politicians In Support of this Policy</h2>
+<% if @policy.users %>
+  <% @policy.users.each do |user| %>
+  <%= link_to user.name, user_path(user) %><br>
+  <% end %>
+<% end %>

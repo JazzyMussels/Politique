@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+    has_many :user_scandals
+    has_many :scandals, through: :user_scandals
+    has_many :user_policies
+    has_many :policies, through: :user_policies
+    has_many :user_parties
+    has_many :parties, through: :user_parties
+    has_many :user_debates
+    has_many :debates, through: :user_debates
+
     has_secure_password
 
     def is_politician?
@@ -13,9 +22,6 @@ class User < ApplicationRecord
         self.all.select {|user| !user.is_politician?}
     end
 
-    def add_policy_to_user
-        Policy.update(user_id: session[:user_id])
-    end
 
     def add_party_to_user
     end

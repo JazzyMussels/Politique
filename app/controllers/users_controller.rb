@@ -5,22 +5,6 @@ class UsersController < ApplicationController
     @users = User.all 
   end
 
-  # def login
-  #   render :login
-  # end
-
-  # def authenticate
-  #   @user = User.find_by(email: params[:user][:email])
-
-  #   if @user.authenticate(params[:user[:password]])
-  #     session[:user_id] = @user.id
-          #redirect_to @user
-      # else
-      #   flash[:errror] = 'incorrect username or password'
-      #   redirect to login_path
-  #   end
-  # end
-
   def index
     @users = User.all_politicians
   end
@@ -52,6 +36,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def add_policy_to_user
   end
 
   def update

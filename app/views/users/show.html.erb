@@ -31,3 +31,11 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
+
+
+<h2> Your Policy Positions</h2>
+<% if @user.policies %>
+  <% @user.policies.each do |pol| %>
+  <%= link_to pol.title, policy_path(pol) %><br>
+  <% end %>
+<% end %>
