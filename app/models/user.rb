@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-    
+    #has_secure_password
+
+    #has_secure_password adds two fields to your model: password and password_confirmation. These fields don't correspond to database columns! Instead, the method expects there to be a password_digest column defined in your migrations.
+
     # def password=(user_input)
     #     hashed_password = BCrypt::Passsword.create(user_input)
     #     self.update(password_digest: hashed_password)
