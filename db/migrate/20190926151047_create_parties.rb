@@ -4,8 +4,6 @@ class CreateParties < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :party_type
       t.text :bio
-      t.integer :user_id
-      
       t.timestamps
     end
   end

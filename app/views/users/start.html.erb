@@ -1,7 +1,21 @@
 <h1>Welcome To The Thunder Dome!</h1><br>
+<% if session[:user_id] %>
+  <p> You are currently logged in as: <%= User.find(session[:user_id]).name %></p> 
+  <% end %>
 <h2>Where Do You Want To Go?</h2><br>
-<%= link_to  'View Policies:', policies_path %><br>
-<%= link_to  'View Party Information:', parties_path %><br>
-<%= link_to  'See the Latest Scandals:', scandals_path %><br>
-<%= link_to  'See Debates:', debates_path %><br>
 <%= link_to 'Click Here to Log-in', login_path %><br>
+<p>New to our site? Start here! <br>
+   After logging in, you can view<br>
+   all of the politicians and voters<br>
+   who have signed up on our site.</p>
+<%= link_to 'View Policies:', policies_path %><br>
+<p>See existing policies, create new ones, <br>
+   and add positions to your personal platform.</p>
+<%= link_to 'View Party Information:', parties_path %><br>
+<p>Create or join a political party.</p>
+<%= link_to 'See the Latest Scandals:', scandals_path %><br>
+<p>Let's face it: politicians aren't the most trustworthy.<br>
+ Share some dirt or see what's already been uncovered</p>
+<%= link_to 'See Debates:', debates_path %><br>
+<p>See all of the existing debates</p>
+

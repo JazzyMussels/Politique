@@ -1,16 +1,14 @@
 class User < ApplicationRecord
-    #has_secure_password
+    has_many :user_scandals
+    has_many :scandals, through: :user_scandals
+    has_many :user_policies
+    has_many :policies, through: :user_policies
+    has_many :user_parties
+    has_many :parties, through: :user_parties
+    has_many :user_debates
+    has_many :debates, through: :user_debates
 
-    #has_secure_password adds two fields to your model: password and password_confirmation. These fields don't correspond to database columns! Instead, the method expects there to be a password_digest column defined in your migrations.
-
-    # def password=(user_input)
-    #     hashed_password = BCrypt::Passsword.create(user_input)
-    #     self.update(password_digest: hashed_password)
-    # end
-
-    # def authenticate(user_input)
-    #     BCrypt::PAssword.new(self.password_digest) == user_input
-    # end
+    has_secure_password
 
     def is_politician?
         politician

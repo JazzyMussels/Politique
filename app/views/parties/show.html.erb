@@ -1,5 +1,22 @@
-<h1><%= @party.name %> Party</h1>
-<h2>Type: <%= @party.party_type %></h2>
+<h1><%= @party.name %> Party</h1><br>
+<img src="<%= @party.photo %>">
+<h2>Type: <%= @party.party_type %></h2><br>
 <br>
-<h3>Party Information:</h3>
+<h3>Party Information:</h3><br>
 <p> <%= @party.bio %>
+<br>
+<h2> Members of this Party</h2>
+<% if @party.users %>
+  <% @party.users.each do |user| %>
+  <% if user.is_politician? %>
+  <%= link_to user.name, user_path(user) %><br>
+  <% end %>
+  <% end %>
+<% end %>
+<br>
+<%= button_to("Become A Member of This Party", user_path(@party.link_party_to_user(session[:user_id])), {:method => :get}) %>
+<%= button_to "Edit This Page", edit_party_path(@party), {method: :get} %>
+<%= button_to  "Back to Parties Page", parties_path, {method: :get} %>
+<br>
+
+

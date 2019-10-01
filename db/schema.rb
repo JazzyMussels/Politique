@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_185633) do
+ActiveRecord::Schema.define(version: 2019_09_30_195917) do
 
   create_table "debates", force: :cascade do |t|
     t.string "name"
@@ -20,37 +20,64 @@ ActiveRecord::Schema.define(version: 2019_09_26_185633) do
     t.integer "winner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "network_photo"
   end
 
   create_table "parties", force: :cascade do |t|
     t.string "name"
     t.string "party_type"
     t.text "bio"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo"
   end
 
   create_table "policies", force: :cascade do |t|
     t.string "title"
     t.string "content"
-    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo"
   end
 
   create_table "scandals", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.string "photographic_evidence"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_debates", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "debate_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_parties", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "party_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_policies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "policy_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_scandals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "scandal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "password"
     t.string "name"
     t.string "photo"
     t.integer "age"
@@ -66,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_185633) do
     t.integer "vote_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end

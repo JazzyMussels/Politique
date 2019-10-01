@@ -1,3 +1,18 @@
 <h1><%= @policy.title %></h1>
 <p> <%= @policy.content %></p>
+<img src="<%= @policy.photo %>">
 <br>
+<%= button_to("Add This Policy To Your Platform", user_path(@policy.link_policy_to_user(session[:user_id])), {:method => :get}) %>
+<%= button_to "Edit This Page", edit_policy_path(@policy), {method: :get} %>
+<%= button_to "Back to Policies Page", policies_path, {method: :get} %>
+<br>
+<h2> Here are all Politicians In Support of this Policy</h2>
+<% if @policy.users %>
+  <% @policy.users.each do |user| %>
+  <% if user.is_politician? %>
+  <%= link_to user.name, user_path(user) %><br>
+  <% end %>
+  <% end %>
+  <% else %>
+  <p>Start a Trend! Become the First Person to Publicly Endorse This Position!</p>
+<% end %>

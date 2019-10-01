@@ -4,7 +4,6 @@ class CreateScandals < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :content
       t.string :photographic_evidence
-      t.integer :user_id
       t.timestamps
     end
   end

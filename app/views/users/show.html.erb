@@ -2,6 +2,11 @@
 <% if @user.is_politician? %>
 <h1><%= @user.name %></h1>
 <%= image_tag @user.photo %>
+<% if @user.parties %>
+<% @user.parties.each do |p| %>
+<h2>Proud Member of the <%= link_to  p.name, party_path(p) %> Party!</h2><br>
+<% end %>
+<% end %>
 <h2> Title: <%= @user.title %></h2>
 <h3>Candidate Biography</h3>
 <p> <%= @user.bio %> </p>
@@ -11,20 +16,54 @@
 <p> Location: <%= @user.location %> </p>
 <p> Running Mate: <%= @user.running_mate_name %> </p>
 <%= image_tag @user.running_mate_photo %>
+<br>
+<h2> Your Policy Positions</h2>
+<% if @user.policies %>
+  <% @user.policies.each do |pol| %>
+  <%= link_to pol.title, policy_path(pol) %><br>
+  <% end %>
+<% end %>
+<br>
+<% if @user.scandals %>
+<% @user.scandals.each do |s| %>
+<h2>Scandals You are Named In</h2>
+<%= link_to  s.name, scandal_path(s) %><br>
+<% end %>
+<% end %>
+
+
 <p> You can reach <%= @user.name %> by sending an e-mail to: <%= @user.email %>
 <%= link_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
 <%= link_to  "Back to All Politicians", users_path %>
 <% else %>
-
 <h1><%= @user.name %></h1>
 <%= image_tag @user.photo %>
+<% if @user.parties %>
+<% @user.parties.each do |p| %>
+<h2>Proud Member of the <%= link_to  p.name, party_path(p) %> Party!</h2><br>
+<% end %>
+<% end %>
 <h3>Personal Biography</h3>
+<p><%=session[:user_id]%></p>
 <p> <%= @user.bio %> </p>
 <p> Age: <%= @user.age %> </p>
 <p> Race: <%= @user.race %> </p>
 <p> Gender: <%= @user.gender %> </p>
 <p> Location: <%= @user.location %> </p>
+<br>
+<h2> Issues That are Near and Dear to Your Heart</h2>
+<% if @user.policies %>
+  <% @user.policies.each do |pol| %>
+  <%= link_to pol.title, policy_path(pol) %><br>
+  <% end %>
+<% end %>
+<br>
 <%= link_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
 <%= link_to  "Back to All Voters", users_path %>
 <%end%>
 
+
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>

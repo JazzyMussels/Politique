@@ -3,4 +3,5 @@
 <%= link_to  s.title,  policy_path(s) %><br>
 <% end %>
 <br>
-<%= link_to  "Back To Main Page", root_path %>
+<%= button_to  "Create A New Policy", new_policy_path, {method: :get} %>
+<%= button_to  "Back To Main Page", root_path, {method: :get} %>
