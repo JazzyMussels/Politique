@@ -10,7 +10,9 @@
 <% if @user.parties.empty? %> 
 <p>Join a <%= link_to  'Political Party', parties_path %> to have it display here!</p>
 <% end %>
-<h2>You Currently Have 0 Votes!</h2><br>
+<h2>You Currently Have <%= @user.vote_count %> Votes!</h2><br>
+<%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %>
+
 <h2> Title: <%= @user.title %></h2><br>
 <h3>Candidate Biography</h3><br>
 <p> <%= @user.bio %> </p><br>
@@ -43,7 +45,7 @@
 <br>
 <p> You can reach <%= @user.name %> by sending an e-mail to: <%= @user.email %>
 <%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
-<%= button_to  "Back to All Users", users_path %>
+<%= button_to  "Back to All Users", users_path, {method: :get} %>
 
 
 <% else %>
@@ -85,9 +87,10 @@
 <% end %>
 <br>
 <h2>You Have Voted For These Candidates</h2>
+
 <p>Vote now to show the world your true allegiances!</p>
 <%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
-<%= button_to  "Back to All Users", users_path %>
+<%= button_to  "Back to All Users", users_path, {method: :get} %>
 <%end%>
 
 

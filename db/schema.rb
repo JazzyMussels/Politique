@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_182709) do
+ActiveRecord::Schema.define(version: 2019_10_01_191358) do
 
   create_table "debates", force: :cascade do |t|
     t.string "name"
@@ -95,6 +95,13 @@ ActiveRecord::Schema.define(version: 2019_10_01_182709) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "voter_id"
+    t.integer "politician_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

@@ -28,6 +28,11 @@ class UsersController < ApplicationController
       redirect_to users_path
   end
 
+  def increase_vote_count
+    @user = User.find(params[:id])
+    redirect_to user_path(@user.increase_vote_count(params[:voter_id], params[:politician_id]))
+  end
+
   def edit
   end
 
