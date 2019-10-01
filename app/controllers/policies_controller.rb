@@ -23,6 +23,10 @@ class PoliciesController < ApplicationController
   def edit
   end
 
+  def add_policy_to_user
+    redirect_to user_path(Policy.link_policy_to_user(params[:user_id], params[:policy_id]))
+  end
+  
   def update 
     if @policy.update(policy_params)
       redirect_to @policy 

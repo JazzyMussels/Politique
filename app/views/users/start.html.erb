@@ -1,7 +1,9 @@
 <h1>Welcome To The Thunder Dome!</h1><br>
 <% if session[:user_id] %>
   <p> You are currently logged in as: <%= User.find(session[:user_id]).name %></p> 
+  <%= button_to "See My Home Page", user_path(session[:user_id]), {method: :get} %>
   <% end %>
+  <br>
 <h2>Where Do You Want To Go?</h2><br>
 <%= link_to 'Click Here to Log-in', login_path %><br>
 <p>New to our site? Start here! <br>
@@ -18,4 +20,7 @@
  Share some dirt or see what's already been uncovered</p>
 <%= link_to 'See Debates:', debates_path %><br>
 <p>See all of the existing debates</p>
-
+<br>
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>

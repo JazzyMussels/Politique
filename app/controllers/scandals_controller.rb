@@ -10,7 +10,9 @@ class ScandalsController < ApplicationController
 
   def create
     @scandal = Scandal.new(scandal_params)
+      @user = User.find(session[:user_id])
       if @scandal.save 
+        UserScandal.create(user_id: params[:scandal][:id], scandal_id: @scandal.id, giver_id: @user.id) 
       flash[:success] = 'This Scandal is successfully going viral!'
        redirect_to @scandal
       else
@@ -20,6 +22,10 @@ class ScandalsController < ApplicationController
   end
 
   def show
+  end
+
+  def add_scandal_to_user
+    redirect_to user_path(Scandal.link_scandal_to_user(params[:user_id], params[:scandal_id]))
   end
 
   def edit
@@ -46,7 +52,7 @@ class ScandalsController < ApplicationController
   end
 
   def scandal_params 
-    params.require(:scandal).permit(:title, :content, :photographic_evidence, :user_id)
+    params.require(:scandal).permit(:title, :content, :photographic_evidence, :user_id, :giver_id)
   end
 
 end

@@ -20,6 +20,10 @@ class PartiesController < ApplicationController
   def show
   end
 
+  def add_party_to_user
+    redirect_to user_path(Party.link_party_to_user(params[:user_id], params[:party_id]))
+  end
+
   def edit
   end
 
