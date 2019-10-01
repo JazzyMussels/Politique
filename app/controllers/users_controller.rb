@@ -38,9 +38,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def add_policy_to_user
-  end
-
   def update
   if @user.update(user_params)
     redirect_to @user 

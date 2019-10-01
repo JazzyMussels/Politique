@@ -22,14 +22,6 @@ class User < ApplicationRecord
         self.all.select {|user| !user.is_politician?}
     end
 
-
-    def add_party_to_user
-    end
-
-
-    def add_scandal_to_user
-    end
-
     def make_homeless
     end
 end

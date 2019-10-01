@@ -5,5 +5,7 @@
 <p> <%= @scandal.content %></p>
 <br>
 <img src= "<%= @scandal.photographic_evidence %>">
+<br>
+
 <%= link_to  "See All Scandals", scandals_path %>
 <%= link_to  "Edit This Scandal", edit_scandal_path(@scandal) %>
