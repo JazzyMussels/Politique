@@ -13,8 +13,11 @@
   <% end %>
   <% end %>
 <% end %>
+<% if @party.users.empty? %>
+<p>Become the first Politician to declare for this Party, your portrait will hang here for an eternity!</p>
+<% end %>
 <br>
-<%= button_to("Become A Member of This Party", user_path(@party.link_party_to_user(session[:user_id])), {:method => :get}) %>
+<%= button_to "Become A Member of This Party", action: 'add_party_to_user', params: {user_id: session[:user_id], party_id: @party.id} %>
 <%= button_to "Edit This Page", edit_party_path(@party), {method: :get} %>
 <%= button_to  "Back to Parties Page", parties_path, {method: :get} %>
 <br>

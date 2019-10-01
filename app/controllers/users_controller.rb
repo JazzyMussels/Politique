@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   
   def start
-    @users = User.all 
   end
 
   def index
-    @users = User.all_politicians
+    @users = User.all
+    @user = User.find(session[:user_id])
   end
 
   def new 
@@ -23,16 +23,9 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params)
-      return redirect_to login_path unless @user.save
+      redirect_to login_path unless @user.save
       session[:user_id] = @user.id
-      redirect_to @user
-  end
-
-  def show
-    @user = User.find_by(id: session[:user_id])
-    if @user
-    render :show
-    end 
+      redirect_to users_path
   end
 
   def edit

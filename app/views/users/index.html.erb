@@ -1,18 +1,20 @@
-<h1>Members Area</h1>
+<h1>Welcome Back, <%= @user.name %>!</h1>
 <br>
 <%= button_to "See My Home Page", user_path(session[:user_id]), {method: :get} %>
 <br>
 <h2>Current Politicians</h2>
 <p>To view information about a candidate, click below:</p>
-<% User.all_politicians.each do |user| %> 
-    <%= link_to user.name, user_path(user) %><br>
+<% User.all_politicians.each do |u| %> 
+<% if u.id != session[:user_id] %>
+    <%= link_to u.name, user_path(u) %><br>
+<%end%>
 <%end%>
 <br>
 <h2>See Voters</h2>
 <p>To view information about another voter, click below:</p>
-<% User.all_voters.each do |user| %> 
-<% if user.id != session[:user_id] %>
-    <%= link_to user.name, user_path(user) %><br>
+<% User.all_voters.each do |u| %> 
+<% if u.id != session[:user_id] %>
+    <%= link_to u.name, user_path(u) %><br>
 <%end%>
 <%end%>
 <br>
