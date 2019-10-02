@@ -4,7 +4,7 @@
 <br>
 <h2>Current Politicians</h2>
 <p>To view information about a candidate, click below:</p>
-<% User.all_politicians.each do |u| %> 
+<% User.all_politicians_sorted_by_vote_count.each do |u| %> 
 <% if u.id != session[:user_id] %>
     <%= link_to u.name, user_path(u) %><br>
 <%end%>
