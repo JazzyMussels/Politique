@@ -10,13 +10,13 @@
 <% if @user.parties.empty? %> 
 <p>Join a <%= link_to  'Political Party', parties_path %> to have it display here!</p>
 <% end %>
-<h2>You Currently Have <%= @user.vote_count %> Votes!</h2><br>
+<h2>Current Vote Count: <%= @user.vote_count %> </h2>
 <%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %>
-
+<br>
 <h2> Title: <%= @user.title %></h2><br>
-<h3>Candidate Biography</h3><br>
+<h3>Candidate Biography</h3>
 <p> <%= @user.bio %> </p><br>
-<h3> Candidate Stats</h3><br>
+<h3> Candidate Stats</h3>
 <p> Age: <%= @user.age %> </p>
 <p> Race: <%= @user.race %> </p>
 <p> Gender: <%= @user.gender %> </p>
@@ -43,6 +43,15 @@
   <p> You're currently as clean as a whistle. We're surprised, frankly! Don't screw this up!</p>
 <% end %>
 <br>
+<h2>People Who Have Voted For You</h2>
+<% if @user.votees.present? %>
+<% @user.votees.each do |c| %>
+<%= link_to  c.name, user_path(c) %><br>
+<% end %>
+<% else %>
+<p>Get out there and talk to some <%= link_to  "voters", users_path %>!</p>
+<% end %><br>
+<br>
 <p> You can reach <%= @user.name %> by sending an e-mail to: <%= @user.email %>
 <%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
 <%= button_to  "Back to All Users", users_path, {method: :get} %>
@@ -60,8 +69,8 @@
 <p>Join a <%= link_to  'Political Party', parties_path %> to have it display here!</p>
 <% end %>
 <h3>Personal Biography</h3>
-<p><%=session[:user_id]%></p>
-<p> <%= @user.bio %> </p>
+<p><%= @user.bio %> </p><br>
+<h3> Voter Stats</h3>
 <p> Age: <%= @user.age %> </p>
 <p> Race: <%= @user.race %> </p>
 <p> Gender: <%= @user.gender %> </p>
@@ -80,15 +89,20 @@
 <h2>Scandals You Have Uncovered</h2>
 <% if @user.reported_scandals.present? %>
   <% @user.reported_scandals.each do |scan| %>
-  <%= link_to  scan.title, scandal_path(scan) %>
+  <%= link_to  scan.title, scandal_path(scan) %><br>
   <% end %>
 <% else %>
   <p> Spill the dirt on a politician by bringing a new <%= link_to  "Scandal", new_scandal_path %> to light!</p>
 <% end %>
 <br>
 <h2>You Have Voted For These Candidates</h2>
-
+<% if @user.politicians_voted_for.present? %>
+<% @user.politicians_voted_for.each do |c| %>
+<%= link_to  c.name, user_path(c) %><br>
+<% end %>
+<% else %>
 <p>Vote now to show the world your true allegiances!</p>
+<% end %><br>
 <%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
 <%= button_to  "Back to All Users", users_path, {method: :get} %>
 <%end%>
