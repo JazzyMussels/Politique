@@ -31,26 +31,21 @@ class User < ApplicationRecord
     end
 
     def increase_vote_count(voter_id, politician_id) 
-        @user = User.find(voter_id)
-        @politician = User.find(politician_id)      
-        new_vote = Vote.new(voter_id: voter_id , politician_id: politician_id)  
-        if @user.already_voted_for?(voter_id,politician_id) 
-            @politician           
+        @politician = User.find(politician_id)     
+        if self.already_voted_for?(voter_id, politician_id)            
         else
-            new_vote.save
-            @politician.update(vote_count: (@user.vote_count += 1))
+            Vote.create(voter_id: voter_id , politician_id: politician_id) 
+            @politician.update(vote_count: (@politician.vote_count + 1))
         end
-
         @politician
- 
     end 
 
     def already_voted_for?(voter_id, politician_id)
         Vote.all.each do |v|
-            if (v.voter_id == voter_id) && (v.politician_id == politician_id )
+            if (v.voter_id == voter_id.to_i) && (v.politician_id == politician_id.to_i)
                 return true
             end 
-        end 
+        end
         false   
     end
 
@@ -62,11 +57,16 @@ class User < ApplicationRecord
    
 
     def self.all_politicians
-        self.all.select {|user| user.is_politician?}
+        all.select {|user| user.is_politician?}
     end
 
+    def self.all_politicians_sorted_by_vote_count
+        all_politicians.sort_by(&:vote_count).reverse
+    end
+
+
     def self.all_voters
-        self.all.select {|user| !user.is_politician?}
+        all.select {|user| !user.is_politician?}
     end
 
     def make_homeless
