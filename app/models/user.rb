@@ -22,6 +22,10 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    validates :password, length: { is: 5 }
+    #validates_presence_of attribute_names.reject { |attr| attr =~ /id|created_at|updated_at/i }
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
     def is_politician?
         politician
     end
@@ -45,6 +49,11 @@ class User < ApplicationRecord
         false   
     end
 
+    def party_limit_one
+        @user = User.find()
+        @user.parties.pop if @user.parties.length > 1
+        return 'you must leave a party before joining another' 
+    end
    
 
     def self.all_politicians
