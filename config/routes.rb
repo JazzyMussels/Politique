@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :games
   get 'sessions/new'
   root 'users#start'
   

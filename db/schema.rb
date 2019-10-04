@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_191358) do
+ActiveRecord::Schema.define(version: 2019_10_04_025415) do
 
   create_table "debates", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_10_01_191358) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "network_photo"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "option1", default: 0
+    t.integer "option2", default: 0
+    t.integer "option3", default: 0
+    t.integer "option4", default: 0
+    t.integer "moves", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parties", force: :cascade do |t|
