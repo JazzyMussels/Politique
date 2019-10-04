@@ -1,11 +1,11 @@
 <h1>Change The Story</h1><br>
-<%= form_for @scandal do |f| %><br>
-<%= f.label :title, "Scandal Title" %><br>
-<%= f.text_field :title %><br>
-<%= f.label :content, "Whistleblow This MoFo" %><br>
-<%= f.text_area :content %><br>
-<%= f.label :photographic_evidence, "Let's See Some Proof!" %><br>
-<%= f.text_field :photographic_evidence %><br>
-<%= f.submit %><br>
-<% end %>
-<%= link_to  "Back To All Scandals", scandals_path %>
+    <%= form_for @scandal do |f| %><br>
+    <%= f.label :title, "Scandal Title" %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :content, "Whistleblow This MoFo" %><br>
+    <%= f.text_area :content %><br>
+    <%= f.label :photographic_evidence, "Let's See Some Proof!" %><br>
+    <%= f.text_field :photographic_evidence %><br>
+    <%= f.submit %><br>
+    <% end %>
+<%= button_to  "Back To All Scandals", scandals_path, {method: :get} %>

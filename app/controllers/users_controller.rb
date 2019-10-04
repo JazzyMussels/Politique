@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :update, :destroy]
   
   def start
   end
@@ -23,17 +23,25 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params)
-      redirect_to login_path unless @user.save
+      return redirect_to login_path unless @user.save
       session[:user_id] = @user.id
       redirect_to users_path
   end
 
+  def show 
+    @user = User.find_by(id: session['user_id'])
+    @current_user = User.find_by(id: session['user_id'])
+  end
+
   def increase_vote_count
-    @user = User.find(params[:id])
-    redirect_to user_path(@user.increase_vote_count(params[:voter_id], params[:politician_id]))
+    @user = User.find_by(id: params[:id])
+    @user.upvote(session[:user_id], @user.id)
+    redirect_to user_path(@user)
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
+    @current_user = User.find_by(id: session['user_id'])
   end
 
   def update

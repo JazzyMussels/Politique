@@ -1,90 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
 
-  <h1><%= @user.name %></h1>
-  <%= image_tag @user.photo %>
+    <title>Reflux HTML CSS Template</title>
+<!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-  <% if @user.parties.present? %>
-      <% @user.parties.each do |p| %>
-      <h2>Proud Member of the <%= link_to  p.name, party_path(p) %> Party!</h2><br>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+  </head>
+
+  <body>
+    <div id="page-wraper">
+    
+      <section class="section about-me" data-section="section1">
+        <div class="container">
+          <div class="section-heading">
+            <h2><%= @user.name %></h2>
+            <div class="line-dec right-text" ></div>
+            <h2><%= @user.bio %> </h2
+            >
+            
+          </div>
+          <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-image">
+                  <%= image_tag @user.photo %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-text" >
+                  <h2>Personal Information</h2>
+                  <br>
+                    <h3> Age: <%= @user.age %> </h3><br>
+                    <h3>Race: <%= @user.race %> </h3><br>
+                    <h3> Gender: <%= @user.gender %> </h3><br>
+                    <h3>Location: <%= @user.location %> </h3><br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% if @user.is_politician? %>
+          <div class="right-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="right-text">
+                  <h2>My Running Mate</h2>
+                  <br>
+                  <h3>
+                    Allow me to introduce my running mate. Running mates are extremely useful, and <%= @user.running_mate_name %>
+                    is absolutely one of the best. It's truly a blessing to know this person. Bring your baby to an event, 
+                    <%= @user.running_mate_name %> will kiss it on the head in a totally not staged photo-op.
+                  </h3>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-image">
+                  <img src="<%= @user.running_mate_photo %>">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <% end %>
-  <% else %>
-      <p>Join a <%= link_to  'Political Party', parties_path %> to have it display here!</p>
-  <% end %>
+      <section class="section my-services" data-section="section2">
+        <div class="container">
+          <div class="section-heading">
+            <div class="right-text">
+            <h2>Party Affiliation</h2>
+            <div class="line-dec"></div>
+            <% if @user.parties.present? %>
+            <% @user.parties.each do |p| %>
+            <div class="right-text">
+            <h3 class="right-text">I am a card carrying member of the <%= link_to  p.name, party_path(p), {:style=> 'color:#5afffd'} %> Party.</h3
+            >
+            <br>
+            <img src="<%= p.photo %>">
+            <% end %>
+            <% else %>
+            <h3
+              >I am not a card carrying member of a <%= link_to  "Party", parties_path, {:style=> 'color:#5afffd'} %> at present.</h3
+            >
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              
+            </div>
+            <div class="col-md-6">
+              
+            </div>
+            <div class="col-md-6">
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <% if @user.is_politician? %>
-      <h2>Current Vote Count: <%= @user.vote_count %> </h2> 
-       <%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %>
-      <br>
-      <h2> Title: <%= @user.title %></h2><br>
-      <h3>Candidate Biography</h3>
-      <p> <%= @user.bio %> </p><br>
-  <% else %>
-      <h3>Personal Biography</h3>
-      <p><%= @user.bio %> </p><br>
-  <% end %>
-
-  <h3> Personal Stats</h3>
-  <p> Age: <%= @user.age %> </p>
-  <p> Race: <%= @user.race %> </p>
-  <p> Gender: <%= @user.gender %> </p>
-  <p> Location: <%= @user.location %> </p>
-      <% if @user.is_politician? %>
-        <p> Running Mate: <%= @user.running_mate_name %> </p>
-        <%= image_tag @user.running_mate_photo %><br>
-        <br>
-      <% end %>
-
-  <h2> Your Policy Positions</h2>
-  <% if @user.policies.present? %>
-      <% @user.policies.each do |pol| %>
-      <%= link_to pol.title, policy_path(pol) %><br>
-      <% end %>
-  <% else %>
-      <p>Add or Create a new <%= link_to  "Policy Point", policies_path %> to have it display here!</p>
-  <% end %>
-  <br>
-
-  <% if @user.is_politician? %>
-      <h2>Scandals You are Named In</h2>
-        <% if @user.scandals.present? %>
-              <% @user.scandals.each do |s| %>
-              <%= link_to s.title, scandal_path(s) %><br>
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>On The Issues</h2>
+            <div class="line-dec"></div>
+            <div class="right-text">
+            <% if @user.policies.present? %>
+            <% @user.policies.each do |pol| %>
+            <div class="right-text">
+            <h3><%= link_to pol.title, policy_path(pol), {:style=> 'color:#5afffd'} %><br></h3>
+            </div>
             <% end %>
         <% else %>
-              <p> You're currently as clean as a whistle. We're surprised, frankly! Don't screw this up!</p>
-      <% end %>
-     <br>
-      <h2>People Who Have Voted For You</h2>
-          <% if @user.votees.present? %>
-              <% @user.votees.each do |c| %>
-              <%= link_to  c.name, user_path(c) %><br>
-              <% end %>
-          <% else %>
-              <p>Get out there and talk to some <%= link_to  "voters", users_path %>!</p>
-          <% end %><br>
-      <br>
-  <% else %>
-      <h2>Scandals You Have Uncovered</h2>
-          <% if @user.reported_scandals.present? %>
-              <% @user.reported_scandals.each do |scan| %>
-              <%= link_to  scan.title, scandal_path(scan) %><br>
+            <h3>Add or Create a new <%= link_to  "Policy Point", policies_path, {:style=> 'color:#5afffd'} %> to have it display here!</h3>
+        <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="isotope-wrapper">
+              <div class="isotope-box">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <% if @user.is_politician? %>
+                <h2>Scandals You Are Involved In</h2>
+                    <div class="line-dec"></div>
+                    <div class="right-text">
+                        <% if @user.scandals.present? %>
+                            <% @user.scandals.each do |s| %>
+                                <h3><%= link_to s.title, scandal_path(s), {:style=> 'color:#5afffd'} %></h3><br>
+                                <% end %>
+                        <% else %>
+                                <h3> You're currently as clean as a whistle. We're surprised, frankly! Don't screw this up!</h3>
+                        <% end %>
+            <% else %>
+              <h2>Scandals You Have Uncovered</h2>
+              <div class="line-dec"></div>
+                    <div class="right-text">
+                        <% if @user.reported_scandals.present? %>
+                            <% @user.reported_scandals.each do |s| %>
+                                <h3><%= link_to s.title, scandal_path(s), {:style=> 'color:#5afffd'} %></h3><br>
+                                <% end %>
+                        <% else %>
+                                <h3>Spill the dirt on a politician by bringing a new <%= link_to  "Scandal", new_scandal_path %> to light!</h3>
+                        <% end %>
             <% end %>
-          <% else %>
-              <p> Spill the dirt on a politician by bringing a new <%= link_to  "Scandal", new_scandal_path %> to light!</p>
-          <% end %>
-        <h2>You Have Voted For These Candidates</h2>
-            <% if @user.politicians_voted_for.present? %>
-              <% @user.politicians_voted_for.each do |c| %>
-              <%= link_to  c.name, user_path(c) %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="isotope-wrapper">
+              <div class="isotope-box">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section class="section my-work" data-section="section3">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Debate Information</h2>
+          <div class="line-dec"></div>
+          <div class="right-text">
+          <h3> Information Coming Soon</h3>
+        </div>
+    </div>
+        <div class="row">
+          <div class="isotope-wrapper">
+            <div class="isotope-box">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <% if @user.is_politician? %>
+    <section class="section my-work" data-section="section3">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Vote For Me!</h2>
+
+          <div class="line-dec"></div>
+          <div class="right-text">
+          <h3>Click Below to Vote For Me!:</h3>
+          <br>
+          <%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %>
+          <br>
+          <!-- <button type="submit" id="form-submit" class="button">
+            Vote NOW!
+          </button> -->
+          <br>
+          <h1>My Current Vote Count is <%= @user.vote_count %></h1>
+          <br>
+          <br>
+          <br>
+        </div>
+       <h2>Others Who Have Voted For Me</h2>
+       <br>
+       <div class="right-text">
+       <% if @user.votees.present? %>
+              <% @user.votees.each do |c| %>
+              <h3><%= link_to c.name, user_path(c), {:style=> 'color:#5afffd'} %></h3><br>
               <% end %>
           <% else %>
-              <p><%= link_to  "Vote", users_path %> now to show the world your true allegiances!</p>
+              <h3>Get out there and talk to some <%= link_to "voters", users_path, {:style=> 'color:#5afffd'} %>!</h3>
           <% end %><br>
-  <%end%>
-  <br>
-<p> You can reach <%= @user.name %> by sending an e-mail to: <%= @user.email %>
-<%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user) %>
-<%= button_to  "Back to All Users", users_path, {method: :get} %>
-<br>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+        </div>
+        </div>
+    </section>
+    <% else %>
+    <section class="section my-work" data-section="section3">
+            <div class="container">
+              <div class="section-heading">
+                <h2>See Your Votes</h2>
+                <div class="line-dec"></div>
+             <div class="right-text">
+             <% if @user.politicians_voted_for.present? %>
+                    <% @user.politicians_voted_for.each do |c| %>
+                    <h3><%= link_to c.name, user_path(c), {:style=> 'color:#5afffd'} %></h3><br>
+                    <% end %>
+                <% else %>
+                    <h3> <%= link_to "Vote", users_path %> now to show the world your true allegiances!</h3>
+                <% end %><br>
+              </div>
+              </div>
+          </section>
+        <% end %>
+    <% if @user.is_politician? %>
+      <section class="section contact-me" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+                <div class="right-text">
+            <h2>Contact Me</h2>
+            <div class="line-dec"></div>
+            <h3
+              >As a politician, I am extremely, actually, really interested in what you have to say. If you write to me, I will personally read every line and respond. Swear to God! I don't have a team that handles this sort of thing, I'm not like my untrustworthy, unpatriotic, freedom hating, ugly opponents.</h3
+            >
+        </div>
+          </div>
+          
+          <div class="row">
+            <div class="right-content">
+              <div class="container">
+                <form id="contact" action="" method="post">
+                  <div class="row">
+                    <div class="col-md-6">
+                            
+                      <fieldset>
+                            
+                        <input 
+                          name="name"
+                          type="text"
+                          class="form-control right-text"
+                          id="name"
+                          placeholder="Your name..."
+                          required=""
+                        />
+                    
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="email"
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          placeholder="Your email..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="subject"
+                          type="text"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Subject..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <textarea
+                          name="message"
+                          rows="6"
+                          class="form-control"
+                          id="message"
+                          placeholder="Your message..."
+                          required=""
+                        ></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="button">
+                          Send Message
+                        </button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+                <% end %>
+                <%= button_to "Edit Your Personal Information By Clicking Here", edit_user_path(@user), {method: :get} %><br>
+                <%= button_to  "Back to All Users", users_path, {method: :get} %><br>
+                <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+                <input type=submit value='logout'>
+                <% end %>
+                </div>   
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
+   
+  </body>
+</html>

@@ -1,10 +1,12 @@
 <h1>Change a Political Party</h1><br>
-<%= form_for @party do |f| %><br>
-<%= f.label :name, "Party Name:" %><br>
-<%= f.text_field :name %><br>
-<%= f.label :party_type, "What are your political leanings" %><br>
-<%= f.select :party_type,  options_for_select(%w(Liberal Conservative Anarchist Totalitarian)) %>
-<%= f.label :bio, "Briefly Describe Your Party" %><br>
-<%= f.text_area :bio %><br>
-<%= f.submit %><br>
+    <%= form_for @party do |f| %><br>
+    <%= f.label :name, "Party Name:" %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :party_type, "What are your political leanings" %><br>
+    <%= f.select :party_type,  options_for_select(%w(Liberal Conservative Anarchist Totalitarian)) %>
+    <%= f.label :bio, "Briefly Describe Your Party" %><br>
+    <%= f.text_area :bio %><br>
+    <%= f.submit %><br>
 <% end %>
+<br>
+<%= button_to  "Back To Parties Page", parties_path, {method: :get} %>

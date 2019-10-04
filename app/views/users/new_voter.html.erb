@@ -1,31 +1,168 @@
-<h1>Register As A Voter</h1>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-<%= form_for @user do |f| %>
-<%= f.label :email, "Please Enter a Valid e-mail Address!" %><br>
-<%= f.text_field :email %><br>
-<%= f.label :password, "Please Enter a 5 digit password!" %><br>
-<%= f.text_field :password %><br>
-<%= f.label :name, "Enter Your Full Name!" %><br>
-<%= f.text_field :name %><br>
-<%= f.label :photo, "Upload A Selfie!" %><br>
-<%= f.text_field :photo %><br>
-<%= f.label :age, "Tell Us Your Age!" %><br>
-<%= f.text_field :age %><br>
-<%= f.label :race, "What Race Do You Identify As?" %><br>
-<%= f.select :race,  options_for_select(['White', 'Black or African American', 'American Indian and Alaska Native', 'Asian', 'Native Hawaiian and Other Pacific Islander'])  %><br>
-<%= f.label :gender, "What Is Your Gender?" %><br>
-<%= f.select :gender,  options_for_select(['Male', 'Female', 'Other']) %><br>
-<%= f.label :location, "What State Do You Live In?" %><br>
-<%= f.select :location,  options_for_select(%w(Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware
-Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana
-Maine Maryland Massachusetts Michigan Minnesota Mississippi Missouri Montana
-Nebraska Nevada New\ Hampshire New\ Jersey New\ Mexico New\ York North\ Carolina
-North\ Dakota Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina
-South\ Dakota Tennessee Texas Utah Vermont Virginia Washington West\ Virginia
-Wisconsin Wyoming)) %><br>
-<%= f.label :bio, "Tell Us Your Story!" %><br>
-<%= f.text_area :bio %><br>
-<%= f.submit %>
-<% end %><br>
-<%= link_to  "Back To Main Page", root_path %>
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<style>
+       body {
+        background: url(https://live.staticflickr.com/3174/2690293634_8557a484b1_b.jpg); 
+       }
+
+       .blue-img {
+        background-image: url(/images/img01.jpg);
+        display: block;
+        margin: 0 auto;
+        width: 70%;
+        position: relative;
+        top: 65px;
+        padding: 60px 0;
+       }
+
+       .innerWrapper {
+           width: 80%;
+           margin: auto;
+
+       }
+
+       #new_menu {
+        position: absolute;
+        right: 100px;
+        width: 500px;
+        height: 90px;
+        margin: 0 auto;
+        padding: 0;
+        z-index: 100;
+    }
+    
+    #new_menu ul {
+        float: right;
+        margin: 0;
+        padding: 20px 0px 0px 0px;
+        list-style: none;
+        line-height: normal;
+    }
+    
+    #new_menu li {
+        float: left;
+    }
+    
+    #new_menu a {
+        display: block;
+        margin-right: 1px;
+        padding: 0px 20px 0px 20px;
+        text-decoration: none;
+        text-align: center;
+        text-shadow: 1px 1px 0px rgba(0,0,0,.2);
+        text-transform: uppercase;
+        font-family: 'Oswald', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #FFFFFF;
+        border: none;
+    }
+    
+    #new_menu a:hover, #new_menu .current_page_item a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    
+    #new_menu .current_page_item a {
+    }
+    
+
+</style>
+
+<body>  
+        <div id="new_menu">
+                <ul>
+                    <li class="current_page_item"><a href="<%= root_path %>">Homepage</a></li>
+                    <li><a href="<%= parties_path %>">Parties</a></li>
+                    <li><a href="<%= policies_path %>">Policies</a></li>
+                    <li><a href="<%= scandals_path %>">Scandals</a></li>
+          <li><a href="<%= scandals_path %>">Debates</a></li>
+                </ul>
+            </div>
+    <div class="blue-img">
+        <div class="innerWrapper">
+            <div class="card card-1">
+                    <div class="card-heading"></div>
+                    <div class="card-body">
+            <h2 class="title">Voter Registration Info</h2>
+            
+    <%= form_for(@user, :html => {:class => "input-group"}) do |f| %>
+        
+    <div class="input-group">   
+        <%= f.text_field(:name, placeholder: 'FULL NAME', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <div class="input-group">   
+        <%= f.text_field(:email, placeholder: 'EMAIL', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <div class="input-group">   
+        <%= f.text_field(:password, placeholder: 'PASSWORD', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <div class="input-group">   
+        <%= f.text_field(:photo, placeholder: 'UPLOAD PHOTO', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <div class="input-group">   
+        <%= f.text_field(:age, placeholder: 'AGE', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <div class="input-group">   
+        <%= f.select(:race, ['CHOOSE RACE', 'White', 'Black or African American', 'American Indian and Alaska Native', 'Asian', 
+        'Native Hawaiian and Other Pacific Islander'], {}, {:class => "rs-select2 js-select-simple select--no-search"}) %><br>
+        <div class="select-dropdown"></div>
+    </div>
+
+    <div class="input-group">   
+        <%= f.select(:gender, ['CHOOSE GENDER', 'Male', 'Female', 'Other'], {}, {:class => "rs-select2 js-select-simple select--no-search"}) %><br>
+        <div class="select-dropdown"></div>
+    </div>
+  
+    <div class="input-group">  
+        <%= f.select(:location, %w(STATE\ OF\ RESIDENCE Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware
+        Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana
+        Maine Maryland Massachusetts Michigan Minnesota Mississippi Missouri Montana
+        Nebraska Nevada New\ Hampshire New\ Jersey New\ Mexico New\ York North\ Carolina
+        North\ Dakota Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina
+        South\ Dakota Tennessee Texas Utah Vermont Virginia Washington West\ Virginia
+        Wisconsin Wyoming), {}, {:class => "rs-select2 js-select-simple select--no-search"}) %><br>
+        <div class="select-dropdown"></div>
+    </div> 
+
+    <div class="input-group">   
+        <%= f.text_field(:bio, placeholder: 'YOUR BIOGRAPHY', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+
+    <!-- <div class="row row-space">
+            <div class="col-2">
+        <div class="row row-space">
+            <div class="col-2">
+        <div class="p-t-20"> -->
+             <%= f.submit class: "btn btn--radius btn--green" %>
+    <% end %><br>
+        </div>
+        </div>
+</div>
+
+<script src="https://colorlib.com/etc/regform/colorlib-regform-1/js/global.js"></script>
+</body>

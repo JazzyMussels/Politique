@@ -22,22 +22,47 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :password, length: { is: 5 }
+    #validates :password, length: { is: 5 }
     #validates_presence_of attribute_names.reject { |attr| attr =~ /id|created_at|updated_at/i }
-    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+    #validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+    TITLES = ['Law Abiding Citizen', 'City Councillor', 'Mayor', 'State Representative', 'House Representative', 'Senator', 'President']
+
+    def evolve(politician_id)
+        @politician = User.find_by(id: politician_id)
+        case @politician.vote_count 
+        when 0
+            @politician.update_attribute(:title, TITLES[0])
+        when 1
+            @politician.update_attribute(:title, TITLES[1])
+        when 2
+            @politician.update_attribute(:title, TITLES[2])
+        when 3
+            @politician.update_attribute(:title, TITLES[3])
+        when 4
+            @politician.update_attribute(:title, TITLES[4])
+        when 5
+            @politician.update_attribute(:title, TITLES[5])
+        else 
+            @politician.update_attribute(:title, TITLES[6])
+        end
+    end
 
     def is_politician?
         politician
     end
 
-    def increase_vote_count(voter_id, politician_id) 
+    def upvote(voter_id, politician_id) 
         @politician = User.find(politician_id)     
-        if self.already_voted_for?(voter_id, politician_id)            
+        if self.already_voted_for?(voter_id, politician_id)
+            total = @politician.vote_count += 0
+            @politician.update_attribute(:vote_count, total)  
         else
-            Vote.create(voter_id: voter_id , politician_id: politician_id) 
-            @politician.update(vote_count: (@politician.vote_count + 1))
+            Vote.create(voter_id: voter_id.to_i , politician_id: @politician.id) 
+            total = @politician.vote_count += 1
+            @politician.update_attribute(:vote_count, total) 
+            @politician.evolve(politician_id)  
         end
-        @politician
     end 
 
     def already_voted_for?(voter_id, politician_id)
@@ -49,13 +74,12 @@ class User < ApplicationRecord
         false   
     end
 
-    def party_limit_one
-        @user = User.find()
-        @user.parties.pop if @user.parties.length > 1
-        return 'you must leave a party before joining another' 
-    end
+    # def party_limit_one
+    #     @user = User.find(params[:id])
+    #     @user.parties.take(1)
+    #     return 'you must leave a party before joining another' 
+    # end
    
-
     def self.all_politicians
         all.select {|user| user.is_politician?}
     end
@@ -64,11 +88,8 @@ class User < ApplicationRecord
         all_politicians.sort_by(&:vote_count).reverse
     end
 
-
     def self.all_voters
         all.select {|user| !user.is_politician?}
     end
 
-    def make_homeless
-    end
 end

@@ -1,26 +1,134 @@
-<h1>Welcome To The Thunder Dome!</h1><br>
-<% if session[:user_id] %>
-  <p> You are currently logged in as: <%= User.find(session[:user_id]).name %></p> 
-  <%= button_to "See My Home Page", user_path(session[:user_id]), {method: :get} %>
-  <% end %>
-  <br>
-<h2>Where Do You Want To Go?</h2><br>
-<%= link_to 'Click Here to Log-in', login_path %><br>
-<p>New to our site? Start here! <br>
-   After logging in, you can view<br>
-   all of the politicians and voters<br>
-   who have signed up on our site.</p>
-<%= link_to 'View Policies:', policies_path %><br>
-<p>See existing policies, create new ones, <br>
-   and add positions to your personal platform.</p>
-<%= link_to 'View Party Information:', parties_path %><br>
-<p>Create or join a political party.</p>
-<%= link_to 'See the Latest Scandals:', scandals_path %><br>
-<p>Let's face it: politicians aren't the most trustworthy.<br>
- Share some dirt or see what's already been uncovered</p>
-<%= link_to 'See Debates:', debates_path %><br>
-<p>See all of the existing debates</p>
-<br>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : WildFlowers 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+--> 
+<!-- <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>WildFlowers by TEMPLATED</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css' />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head> -->
+<body> 
+  <div class='start'>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">POLITIQUE</a></h1>
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="<%= root_path %>">Homepage</a></li>
+					<li><a href="<%= parties_path %>">Parties</a></li>
+					<li><a href="<%= policies_path %>">Policies</a></li>
+					<li><a href="<%= scandals_path %>">Scandals</a></li>
+          <li><a href="<%= scandals_path %>">Debates</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="banner">
+			<div class="content"><img src="https://media0.giphy.com/media/uKwa2KiBA0rTy/source.gif" width="1000" height="600" alt="" /></div>
+		</div>
+	</div>
+	<!-- end #header -->
+	
+	<div id="page">
+		<div id="content">
+			<div class="post">
+				<h2 class="title">Welcome to Politique, your election HQ</h2><br>
+				<br>
+				<h2 class="title">Log-in or Create an Account</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>New to <strong>Politique?</strong> Start here!
+						After logging in, you can view
+						all of the politicians and voters
+						who are members our site.</p>
+          <p class="links">
+            <a href="<%= login_path %>" class="more">Log-In</a>
+            <a href="#" title="b0x" class="comments">Comments</a>
+          </p>
+				</div>
+			</div>
+			<div class="post">
+				<h2 class="title">On The Issues</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>Here you can share ideas that can change the world. Link existing policy positions to your page, or be the first to speak about a new issue facing the world.</p>
+          <p class="links">
+            <a href="<%= policies_path %>" class="more">Policies</a>
+          <a href="#" title="b0x" class="comments">Comments</a>
+        </p>
+				</div>
+			</div>
+			<div class="post">
+				<h2 class="title">Party Information</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>It's better with a friend! Join an existing political party, get information about other parties, or go against the grain and form a new party that will revolutionize our political system.</p>
+          <p class="links">
+            <a href="<%= parties_path %>" class="more">Parties</a>
+            <a href="#" title="b0x" class="comments">Comments</a>
+          </p>
+				</div>
+			</div>
+			<div class="post">
+				<h2 class="title">Whistleblower Central</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>Let's face it: politicians aren't the most trustworthy. Scandals happen all the time. Share some dirt or see what's already been uncovered</p>
+          <p class="links">
+            <a href="<%= scandals_path %>" class="more">Scandals</a>
+            <a href="#" title="b0x" class="comments">Comments</a>
+          </p>
+				</div>
+			</div>
+			<div class="post">
+				<h2 class="title">Hear it from the horse's mouth</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>The next debate is right around the corner. Get information about who won and lost previous debates.</p>
+					<p class="links">
+            <a href="<%= debates_path %>" class="more">Debates</a>
+            <a href="#" title="b0x" class="comments">Comments</a>
+          </p>
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+    </div>
+    
+		<div id="sidebar">
+			<% if session[:user_id] %>
+            <h3> Current Session </h3><br>
+				  <p class="links"><a href="<%= user_path(session[:user_id]) %>" title="Your Home Page" class="more"><%= User.find(session[:user_id]).name %></a></p>
+			  <% end %>
+			  <!-- <p class="links"></p><%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  				<input type=submit value='logout'>
+			<% end %> -->
+</body>
+</html>
+		</div> 
+
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end #page --> 
+</div>
+<div id="footer">
+	<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by the internet</a>.</p>
+</div>
+</div>
+<!-- end #footer -->
+<!-- </body>
+</html> -->

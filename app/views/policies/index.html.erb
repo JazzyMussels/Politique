@@ -1,7 +1,8 @@
 <h1>THE ISSUES</h1>
 <% @policies.each do |s| %>
-<%= link_to  s.title,  policy_path(s) %><br>
+    <%= link_to  s.title,  policy_path(s) %><br>
 <% end %>
 <br>
+
 <%= button_to  "Create A New Policy", new_policy_path, {method: :get} %>
 <%= button_to  "Back To Main Page", root_path, {method: :get} %>

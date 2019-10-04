@@ -1,16 +1,18 @@
 <h1>Here's the scandal: <%= @scandal.title %></h1>
 <br>
 <h2> Who's Implicated:</h2>
-<% @scandal.users.each do |s| %>
-<%= s.name %>
-<% end %>
+    <% @scandal.users.each do |s| %>
+        <%= s.name %>
+    <% end %>
+
 <h2>What's the Latest?</h2>
 <br>
-<p> <%= @scandal.content %></p>
+    <p> <%= @scandal.content %></p>
 <br>
-<img src= "<%= @scandal.photographic_evidence %>">
+    <img src= "<%= @scandal.photographic_evidence %>">
 <br>
-<%= button_to  "Edit This Scandal", edit_scandal_path(@scandal) %>
-<%= button_to  "See All Scandals", scandals_path %>
+
+<%= button_to  "Edit This Scandal", edit_scandal_path(@scandal), {method: :get} %>
+<%= button_to  "See All Scandals", scandals_path, {method: :get} %>
 
 

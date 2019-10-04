@@ -2,21 +2,28 @@
 <br>
 <%= button_to "See My Home Page", user_path(session[:user_id]), {method: :get} %>
 <br>
-<h2>Current Politicians</h2>
-<p>To view information about a candidate, click below:</p>
-<% User.all_politicians_sorted_by_vote_count.each do |u| %> 
-<% if u.id != session[:user_id] %>
-    <%= link_to u.name, user_path(u) %><br>
-<%end%>
-<%end%>
+
+<h2>Current Politicians</h2><br>
+    <h3>To view information about a candidate, click below:</h3>
+    <br>
+    <br>
+    <h3>Name--------Current Vote Total</h3><br>
+    <br>
+    <% User.all_politicians_sorted_by_vote_count.each do |u| %> 
+        <% if u.id != session[:user_id] %>
+            <p><%= link_to u.name, user_path(u) %> --- <%= u.vote_count %> <br></p> 
+            <%end%>
+        <%end%>
+
 <br>
 <h2>See Voters</h2>
-<p>To view information about another voter, click below:</p>
-<% User.all_voters.each do |u| %> 
-<% if u.id != session[:user_id] %>
-    <%= link_to u.name, user_path(u) %><br>
-<%end%>
-<%end%>
+    <p>To view information about a voter, click below:</p>
+    <% User.all_voters.each do |u| %> 
+        <% if u.id != session[:user_id] %>
+            <%= link_to u.name, user_path(u) %><br>
+            <%end%>
+        <%end%>
+        
 <br>
 <%= button_to  "Back To Main Page", root_path, {method: :get} %>
 

@@ -1,5 +1,8 @@
 <h1>HOW SCANDALOUS!</h1>
+
 <% @scandals.each do |s| %>
-<%= link_to  s.title,  scandal_path(s) %><br>
+    <%= link_to  s.title,  scandal_path(s) %><br>
 <% end %><br>
-<%= link_to  "Back To Main Page", root_path %>
+<br>
+<%= button_to  "Report A New Scandal", new_scandal_path, {method: :get} %>
+<%= button_to  "Back To Main Page", root_path, {method: :get} %>

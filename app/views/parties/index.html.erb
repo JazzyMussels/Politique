@@ -1,7 +1,8 @@
 <h1>Political Parties</h1>
 <p>Click a link below to see information about a party.</p><br>
 <% @parties.each do |p| %>
-<%= link_to  p.name, party_path(p) %><br>
+    <%= link_to  p.name, party_path(p) %><br>
 <% end %><br>
+<br>
 <%= button_to  "Create A New Party", new_party_path, {method: :get} %>
 <%= button_to  "Back To Main Page", root_path, {method: :get} %>
