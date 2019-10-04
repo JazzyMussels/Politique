@@ -1,5 +1,6 @@
 class DebatesController < ApplicationController
   def index
+    Game.create()
   end
 
   def new

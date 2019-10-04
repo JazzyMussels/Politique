@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'users#start'
   
-  
+  get 'start/options' => 'games#options', as: :options
+  get 'start/actions' => 'games#actions', as: :actions
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
+  
   get '/users/new_voter', to: 'users#new_voter', as: :new_voter
   get '/users/new_politician', to: 'users#new_politician', as: :new_politician
   post '/users/:id/add_policy', to: 'policies#add_policy_to_user', as: :add_policy_to_user

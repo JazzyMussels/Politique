@@ -1,0 +1,113 @@
+<%=audio_tag("pokemon_song.mp3", autoplay: false, controls: true) %>
+<h1>HTML5 Canvas Pokemon Game</h1>
+TESTING: <%= @game.option1 %>       
+<div id="battle_background">
+    <div class="row" >
+        <div class="col-lg-6 politician2_info" > 
+            <div row class="name name_politician2">politician2 name</div>
+            <div row class="level level_image2 "><span class="level_politician2"> 5</span></div>
+            <div row class="hp hp_politician2 
+                <% if @game.moves == 1 || @game.moves == 2  %>
+                    <%=" hp_image2_half_bar"%>
+                <% elsif @game.moves == 3 || @game.moves == 4  %>
+                <%=" hp_image2_dying_bar"%>
+                <%end%>
+                <% if @game.moves == 5%>
+                <%=" hp_image2_empty_bar"%>
+                <%end%>">
+            </div>
+        </div>
+        <div class="col-lg-5 politician2action_image"> politician2 image</div>
+        <div class="
+            <% if @game.option1 != 2%>
+                <%="a"%>
+            <%else%>
+                <%= " running_mate_image" %>
+            <%end%>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 politician1action_image" > politician1 image</div>
+        <div class="col-lg-6 politician1_info"> 
+            <div class="name name_politician1">politician1 name</div>
+            <div row class="level level_image1"><span class="level_politician1"> 5</span></div>
+            <div class="hp hp_politician1
+            <% if @game.option2 == 1%>
+                <%=" hp_image1_half_bar"%>
+            <% elsif @game.option2 == 2%>
+                <%=" hp_image1_dying_bar"%>
+            <% elsif @game.option2 == 3%>
+                <%=" hp_image1_empty_bar"%>
+            <%end%>">> 
+            </div>
+        </div>
+    </div>
+    <div class="row command_bar">
+        <% if @game.option1 == 100 %>
+            <%=audio_tag("pokemon_victory.mp3", autoplay: true, controls: true) %>
+        <%end%>
+        <% if @game.option2 >= 4 %>
+            <div class="test typewriter">Trump can't lose!</div>    
+            <%=link_to "w", actions_path(:options => {:option1 => 0, :option2=> 0, :moves => @game.moves})%>
+        <%else%>
+        <% if @game.moves % 2 == 0 %>
+            <% if @game.option1 == 0 %> 
+            <div class="col-lg-5 empty_space" >
+            </div>
+            <div class="col-lg-7 menu" >
+                <div class="row">
+                    <div class="col-lg-6 options option1"><%=link_to "DEBATE", options_path( options: { option1: 1})%></div>
+                    <div class="col-lg-6 options option2"><%=link_to "RnMtE",  options_path( options: { option1: 2})%></div>
+                </div>
+                <div class ="row">
+                    <div class="col-lg-6 options option3"><%=link_to "GAFF", options_path( options: { option1: 3})%></div>
+                        <div class="col-lg-6 options option4"><%=link_to "RUN", options_path( options: { option1: 4})%></div>
+                </div>
+            </div>
+            <%elsif @game.option1 == 1 %>
+                <div class="col-12 nopadding actions action1"><%=link_to "FAKE NEWS", actions_path(:options => {:option1 => 5})%></div>
+                <div class="col-12 nopadding actions action2"><%=link_to "YOU'RE FIRED", actions_path(:options => {:option1 => 6})%></div>
+                <div class="col-12 nopadding actions action3"><%=link_to "YUUUUUUGE", actions_path(:options => {:option1 => 7})%></div>
+                <div class="col-12 nopadding actions action4"><%=link_to "BUILD WALL", actions_path(:options => {:option1 => 8})%></div>
+            <%elsif @game.option1 == 2 %>
+                <div class="test typewriter"> DONALD TRUMP used RUNNING MATE!</div>    
+                <%=link_to "", actions_path(:options => {:option1 => 0, :moves => @game.moves})%>
+            <%elsif @game.option1 == 3 %>
+                <div class="test typewriter"><%=@gaff%></div>    
+                <%=link_to "", actions_path(:options => {:option1 => 0, :option2=> @game.option2 + 1, :moves => @game.moves})%>
+            <%elsif @game.option1 == 4 %>
+                <div class="test typewriter"> QUOTE!</div>    
+                <%=link_to "", actions_path(:options => {:option1 => 0, :moves => @game.moves})%>
+            <%elsif @game.option1 == 5 %>
+                <div class="test typewriter"> DONALD TRUMP used FAKE NEWS!</div>    
+                <%=link_to "", actions_path(:options => {:option1 => 10, :moves => @game.moves})%>
+            <%elsif @game.option1 == 6 %>
+                <div class="test typewriter"> DONALD TRUMP used YOU'RE FIRED!</div>
+
+                <%=link_to "", actions_path(:options => {:option1 => 10, :moves => @game.moves})%>
+            <%elsif @game.option1 == 7 %>
+                <div class="test typewriter"> DONALD TRUMP used YUUUUUGE!</div>
+                <%=link_to "", actions_path(:options => {:option1 => 10, :moves => @game.moves})%>
+            <%elsif @game.option1 == 8 %>
+                <div class="test typewriter"> DONALD TRUMP used BUILD WALL!</div>
+                <%=link_to "", actions_path(:options => {:option1 => 10, :moves => @game.moves})%>
+            <%elsif @game.option1 == 10 %>
+
+                <div class="test typewriter"> <%=@response%></div>
+                <%=link_to "", actions_path(:options => {:option1 => 11, :moves => @game.moves + 1})%>
+            <%end %>
+        <%else %>
+            <%if @game.moves == 5 %>
+                <div class="test typewriter"> Enemy BARACK OBAMA lost the DEBATE!</div>
+                <%=link_to "", actions_path(:options => {:option1 => 100, :moves => @game.moves + 1})%>
+            <% elsif @game.option1 == 11 %>
+                <div class="test typewriter"> BARACK OBAMA used CHANGE!</div>
+                <%=link_to "", actions_path(:options => {:option1 => 12, :moves => @game.moves}) %>
+            <%else%>                 
+                <div class="test typewriter"> No effect!</div>
+                <%=link_to "", actions_path(:options => {:option1 => 0, :moves => @game.moves + 1})%> 
+            <%end%>
+        <%end%>  
+        <%end%>
+    </div>
+</div> 

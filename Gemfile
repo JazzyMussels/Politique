@@ -26,7 +26,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'animate.css-rails', '~>3.2.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: true
 

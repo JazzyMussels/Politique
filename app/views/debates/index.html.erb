@@ -1,0 +1,34 @@
+<%=audio_tag("pokemon_song.mp3", autoplay: false, controls: true) %>
+<h1>HTML5 Canvas Pokemon Game</h1>       
+    <div id="battle_background">
+        <div class="row" >
+            <div class="col-lg-6 politician2_info" > 
+                <div row class="name name_politician2">politician2 name</div>
+                <div row class="level level_image2"><span class="level_politician2"> 5</span></div>
+                <div row class="hp hp_politician2"></div>
+            </div>
+            <div class="col-lg-5 politician2_image"> politician2 image</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 politician1_image" > politician1 image</div>
+            <div class="col-lg-6 politician1_info"> 
+                <div class="name name_politician1">politician1 name</div>
+                <div row class="level level_image1"><span class="level_politician1"> 5</span></div>
+                <div class="hp hp_politician1"> </div>
+            </div>
+        </div>
+        <div class="row command_bar">
+            <div class="col-lg-5 empty_space" >
+            </div>
+            <div class="col-lg-7 menu" >
+                <div class="row">
+                    <div class="col-lg-6 options option1"><%=link_to "DEBATE", options_path( options: { option1: 1})%></div>
+                    <div class="col-lg-6 options option2"><%=link_to "RnMtE",  options_path( options: { option1: 2})%></div>
+                </div>
+                <div class ="row">
+                    <div class="col-lg-6 options option3"><%=link_to "GAFF", options_path( options: { option1: 3})%></div>
+                     <div class="col-lg-6 options option4"><%=link_to "RUN", options_path( options: { option1: 4})%></div>
+                </div>
+            </div>
+        </div>
+    </div> 
