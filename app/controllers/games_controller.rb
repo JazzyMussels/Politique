@@ -8,7 +8,7 @@ class GamesController < ApplicationController
     end
 
     def actions # one of the four moves
-        @response = %w(It's\ super\ effective! Not\ so\ effective!).sample
+        @response = %w(It's\ super\ effective! It's\ Not\ very\ effective!).sample
         @game = Game.last
         @game.update(option_params)
         render :game       

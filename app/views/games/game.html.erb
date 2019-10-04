@@ -1,10 +1,9 @@
 <%=audio_tag("pokemon_song.mp3", autoplay: false, controls: true) %>
-<h1>HTML5 Canvas Pokemon Game</h1>
-TESTING: <%= @game.option1 %>       
+<h1>A WILD DEBATE APPEARED!</h1>   
 <div id="battle_background">
     <div class="row" >
         <div class="col-lg-6 politician2_info" > 
-            <div row class="name name_politician2">politician2 name</div>
+            <div row class="name name_politician2">BARACK OBAMA</div>
             <div row class="level level_image2 "><span class="level_politician2"> 5</span></div>
             <div row class="hp hp_politician2 
                 <% if @game.moves == 1 || @game.moves == 2  %>
@@ -17,7 +16,7 @@ TESTING: <%= @game.option1 %>
                 <%end%>">
             </div>
         </div>
-        <div class="col-lg-5 politician2action_image"> politician2 image</div>
+        <div class="col-lg-5 politician2action_image"></div>
         <div class="
             <% if @game.option1 != 2%>
                 <%="a"%>
@@ -27,9 +26,9 @@ TESTING: <%= @game.option1 %>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-5 politician1action_image" > politician1 image</div>
+        <div class="col-lg-5 politician1action_image" ></div>
         <div class="col-lg-6 politician1_info"> 
-            <div class="name name_politician1">politician1 name</div>
+            <div class="name name_politician1">DONALD TRUMP</div>
             <div row class="level level_image1"><span class="level_politician1"> 5</span></div>
             <div class="hp hp_politician1
             <% if @game.option2 == 1%>
@@ -76,7 +75,7 @@ TESTING: <%= @game.option1 %>
                 <div class="test typewriter"><%=@gaff%></div>    
                 <%=link_to "", actions_path(:options => {:option1 => 0, :option2=> @game.option2 + 1, :moves => @game.moves})%>
             <%elsif @game.option1 == 4 %>
-                <div class="test typewriter"> QUOTE!</div>    
+                <div class="test typewriter"> I HAVE THE BEST ESCAPE!</div>    
                 <%=link_to "", actions_path(:options => {:option1 => 0, :moves => @game.moves})%>
             <%elsif @game.option1 == 5 %>
                 <div class="test typewriter"> DONALD TRUMP used FAKE NEWS!</div>    
