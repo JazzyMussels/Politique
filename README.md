@@ -1,24 +1,7 @@
-# README
+# Need A PickUp Line Now?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You've come to the right place! This is a Command Line Application that allows users to request pick-up lines from a provider. Don't like the line? Fire your provider and a bot will send you Markov chain generated nonsense to try.
 
-Things you may want to cover:
+#Built With
+-Ruby
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
