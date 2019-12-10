@@ -4,4 +4,6 @@ You've come to the right place! This is a Command Line Application that allows u
 
 #Built With
 -Ruby
+-markov chain gem
+-twilio gem
 
