@@ -1,12 +1,128 @@
-<h1>Change a Political Party</h1><br>
-    <%= form_for @party do |f| %><br>
-    <%= f.label :name, "Party Name:" %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :party_type, "What are your political leanings" %><br>
-    <%= f.select :party_type,  options_for_select(%w(Liberal Conservative Anarchist Totalitarian)) %>
-    <%= f.label :bio, "Briefly Describe Your Party" %><br>
-    <%= f.text_area :bio %><br>
-    <%= f.submit %><br>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<style>
+        body {
+            background: url(https://live.staticflickr.com/3174/2690293634_8557a484b1_b.jpg); 
+           }
+    
+           .blue-img {
+            background-image: url(/images/img01.jpg);
+            display: block;
+            margin: 0 auto;
+            width: 70%;
+            position: relative;
+            top: 65px;
+            padding: 60px 0;
+           }
+    
+           .innerWrapper {
+               width: 80%;
+               margin: auto;
+    
+           }
+    
+           #new_menu {
+            position: absolute;
+            right: 100px;
+            width: 500px;
+            height: 90px;
+            margin: 0 auto;
+            padding: 0;
+            z-index: 100;
+        }
+        
+        #new_menu ul {
+            float: right;
+            margin: 0;
+            padding: 20px 0px 0px 0px;
+            list-style: none;
+            line-height: normal;
+        }
+        
+        #new_menu li {
+            float: left;
+        }
+        
+        #new_menu a {
+            display: block;
+            margin-right: 1px;
+            padding: 0px 20px 0px 20px;
+            text-decoration: none;
+            text-align: center;
+            text-shadow: 1px 1px 0px rgba(0,0,0,.2);
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: #FFFFFF;
+            border: none;
+        }
+        
+        #new_menu a:hover, #new_menu .current_page_item a {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+        
+        #new_menu .current_page_item a {
+        }
+        
+</style>
+<body>
+        <div id="new_menu">
+                <ul>
+                    <li class="current_page_item"><a href="<%= root_path %>">Homepage</a></li>
+                    <li><a href="<%= parties_path %>">Parties</a></li>
+                    <li><a href="<%= policies_path %>">Policies</a></li>
+                    <li><a href="<%= scandals_path %>">Scandals</a></li>
+          <li><a href="<%= scandals_path %>">Debates</a></li>
+                </ul>
+            </div>
+    <div class="blue-img">
+        <div class="innerWrapper">
+            <div class="card card-1">
+                    <div class="card-heading"></div>
+                    <div class="card-body">
+            <h2 class="title">Update Party Information</h2>
+
+    <%= form_for @party, :html => {:class => 'input-group'} do |f| %>
+        <div class="input-group">   
+        <%= f.text_field(:name, placeholder: 'PARTY NAME', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+    </div>
+    <div class="input-group">   
+    <%= f.select(:party_type, ["Liberal", "Conservative", "Anarchist", "Totalitarian"], {}, {:class => "rs-select2 js-select-simple select--no-search"}) %><br>
+</div>
+<div class="input-group">   
+<%= f.text_field(:photo, placeholder: 'UPLOAD PHOTO', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+</div>
+<div class="input-group">   
+<%= f.text_field(:bio, placeholder: 'Briefly Describe Your Party', :html => {:class => "input--style-1 js-datepicker"}) %><br>
+</div>
+<!-- <div class="row row-space">
+<div class="col-2">
+<div class="row row-space">
+<div class="col-2">
+<div class="p-t-20"> -->
+ <%= f.submit class: "btn btn--radius btn--green" %>
+<% end %><br>
+</div>
 <br>
-<%= button_to  "Back To Parties Page", parties_path, {method: :get} %>
+<button><%= button_to  "Back To Parties Page", parties_path, {method: :get} %></button>

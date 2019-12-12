@@ -1,21 +1,66 @@
-<h1><%= @policy.title %></h1><br>
-  <p> <%= @policy.content %></p><br>
-  <img src="<%= @policy.photo %>"><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<style>
+       body {
+        background: url(https://live.staticflickr.com/3174/2690293634_8557a484b1_b.jpg); 
+        
+       }
+
+       party-name {
+         color: whitesmoke;
+       }
+    
+
+    </style>
+    <body> 
+    <h2 id='policy-header'><%= @policy.title %></h2>
+    <div class='policy_page_details'>
 <br>
-<h2> Here are all Politicians In Support of this Policy</h2>
+<h1>ABOUT THIS ISSUE</h1>
+  <p id='policy_text'> <%= @policy.content %></p><br>
+  <h2> Political Supporters</h2>
     <% if @policy.users.present? %>
         <% @policy.users.each do |user| %>
           <% if user.is_politician? %>
-            <%= link_to user.name, user_path(user) %><br>
+            <p><%= link_to user.name, user_path(user) %></p><br>
             <% end %>
         <% end %>
     <% else %>
         <p>Start a Trend! Become the First Person to Publicly Endorse This Position!</p>
     <% end %>
+  </div>
+  <div class='policy_pic'>
+  <img src="<%= @policy.photo %>"><br>
+  </div>
 <br>
 
-<%= button_to "Add This Policy To Your Platform", action: 'add_policy_to_user', params: {user_id: session[:user_id], policy_id: @policy.id} %>
-<%= button_to "Edit This Page", edit_policy_path(@policy), {method: :get} %>
-<%= button_to "Back to Policies Page", policies_path, {method: :get} %>
-
+<br>
+<div class='policy_navigation_links'>
+<button><%= button_to "Add This Policy To Your Platform", action: 'add_policy_to_user', params: {user_id: session[:user_id], policy_id: @policy.id} %></button>
+<br>
+<button><%= button_to "Edit This Page", edit_policy_path(@policy), {method: :get} %></button>
+<br>
+<button><%= button_to "Back to Policies Page", policies_path, {method: :get} %></button>
+</div>
+</body>
+</html>
 

@@ -1,25 +1,71 @@
-<h1><%= @party.name %> Party</h1><br>
-  <img src="<%= @party.photo %>">
-  <h2>Type: <%= @party.party_type %></h2><br>
-<br>
-<h3>Party Information:</h3><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<style>
+       body {
+        background: url(https://live.staticflickr.com/3174/2690293634_8557a484b1_b.jpg); 
+        
+       }
+
+       party-name {
+         color: whitesmoke;
+       }
+    
+
+    </style>
+    <body> 
+    <div class='show_page_text'>
+<h1 id='party-name'><%= @party.name %> Party</h1><br>
+  <img class='party-pic' src="<%= @party.photo %>">
+  <div class='page_details'>
+  <h2> INFORMATION</h2>
+  <br>
+  <h3>Type:</h3>
+  <p> <%= @party.party_type %></p><br>
+  <h3>About:</h3><br>
   <p> <%= @party.bio %>
 <br>
-<h2> Members of this Party</h2>
+<br>
+<h3> Members:</h3>
 <% if @party.users.present? %>
   <% @party.users.each do |user| %>
     <% if user.is_politician? %>
-      <%= link_to user.name, user_path(user) %><br>
+      <p class='link-name'><%= link_to user.name, user_path(user) %><br></p>
       <% end %>
   <% end %>
 <% else %>
   <p>Become the first Politician to declare for this Party, your portrait will hang here for an eternity!</p>
 <% end %>
 <br>
-
-<%= button_to "Become A Member of This Party", action: 'add_party_to_user', params: {user_id: session[:user_id], party_id: @party.id} %>
-<%= button_to "Edit This Page", edit_party_path(@party), {method: :get} %>
-<%= button_to  "Back to Parties Page", parties_path, {method: :get} %>
+</div>
+<div class='navigation_links'>
+<button><%= button_to "Become A Member", action: 'add_party_to_user', params: {user_id: session[:user_id], party_id: @party.id} %></button>
 <br>
+<button><%= button_to "Edit", edit_party_path(@party), {method: :get} %></button>
+<br>
+<button><%= button_to  "All Parties", parties_path, {method: :get} %></button>
+<br>
+</div>
+</div>
+</body> 
+</html>
 
 

@@ -208,7 +208,7 @@ https://templatemo.com/tm-531-reflux
           <div class="right-text">
           <h3>Click Below to Vote For Me!:</h3>
           <br>
-          <%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %>
+          <button><%= button_to 'Vote For Me!', action: 'increase_vote_count', params: {voter_id: session[:user_id], politician_id: @user.id} %></button>
           <br>
           <!-- <button type="submit" id="form-submit" class="button">
             Vote NOW!
