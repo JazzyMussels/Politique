@@ -1595,8 +1595,6 @@ a:hover {
 	background: url(images/img03.png) no-repeat left bottom;
 }
 
-#banner .content {
-}
 
 
 .list-style1 {
@@ -1609,13 +1607,6 @@ a:hover {
 	color: #7F7F7F;
 }
 
-.login-h1 {
-
-}
-
-.login-h2 {
-
-}
 
 .right-text {
 
@@ -1859,4 +1850,111 @@ background-image: url(https://media.salon.com/2017/05/the-president-show.jpg);
 @keyframes typing {
  from { width: 0% }
  to { width: 100% }
+}
+
+.party-pic{
+  height: 300px;
+  width: 300px;
+  margin-left: 40%;
+  
+}
+.policy_pic{
+  height: 400px;
+  width: 400px;
+  margin-left: 38%;
+  margin-top:-425px;
+}
+
+.show_page_text{
+  color: whitesmoke;
+}
+#party-name{
+  color: whitesmoke;
+  text-align: center;
+  margin-top:10px;
+}
+
+.navigation_links{
+  background-image: url(/images/img01.jpg);
+  width: 400px;
+  height: 225px;
+  margin-top: -415px;
+  margin-left:955px;
+  text-align: center;
+}
+
+.policy_navigation_links{
+  background-image: url(/images/img01.jpg);
+  width: 300px;
+  height: 225px;
+  margin-top: -445px;
+  margin-left:1055px;
+  text-align: center;
+}
+
+.page_details{
+  background-image: url(/images/img01.jpg);
+  width: 475px;
+  height: 425px;
+  margin-top: -300px;
+  margin-left:55px;
+  text-align: center;
+}
+.policy_page_details{
+  background-image: url(/images/img01.jpg);
+  width: 450px;
+  height: 425px;
+  margin-top: 50px;
+  margin-left:55px;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.link-name{
+  color: whitesmoke;
+}
+
+#policy-header{
+  color: whitesmoke;
+  text-align: center;;
+}
+
+#scandal_header{
+  text-align: center;
+  color: whitesmoke;
+  font-size: 42px;
+}
+
+#scandal_nav_links{
+  background-image: url(/images/img01.jpg);
+  width: 200px;
+  height: 100px;
+  text-align: center;
+ margin-left: 44%;
+}
+
+#scandal_image{
+  height: 400px;
+  width: 400px;
+  margin-left: 37%;
+  margin-top: -225px;
+}
+
+#implicated{
+  background-image: url(/images/img01.jpg);
+  width:300px;
+  height: 150px;
+  margin-left: 1050px;
+  margin-top:30px;
+  text-align: center;
+  color: whitesmoke;
+}
+#scandal_details{
+  background-image: url(/images/img01.jpg);
+  width:300px;
+  height: 200px;
+  margin-left: 100px;
+  margin-top: -150px;
+  text-align: center;
+  color: whitesmoke;
 }

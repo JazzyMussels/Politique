@@ -1,18 +1,59 @@
-<h1>Here's the scandal: <%= @scandal.title %></h1>
-<br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<style>
+       body {
+        background: url(https://live.staticflickr.com/3174/2690293634_8557a484b1_b.jpg); 
+        
+       }
+
+       party-name {
+         color: whitesmoke;
+       }
+    
+
+    </style>
+    <body> 
+   
+<h2 id='scandal_header'> <%= @scandal.title %></h2>
+
+
+<div id='implicated'>
 <h2> Who's Implicated:</h2>
     <% @scandal.users.each do |s| %>
         <%= s.name %>
     <% end %>
-
+</div>
+<div id='scandal_details'>
 <h2>What's the Latest?</h2>
-<br>
     <p> <%= @scandal.content %></p>
+</div>
 <br>
+<div id='scandal_image'>
     <img src= "<%= @scandal.photographic_evidence %>">
+    </div>
 <br>
-
-<%= button_to  "Edit This Scandal", edit_scandal_path(@scandal), {method: :get} %>
-<%= button_to  "See All Scandals", scandals_path, {method: :get} %>
-
-
+<div id='scandal_nav_links'>
+<button><%= button_to  "Edit This Scandal", edit_scandal_path(@scandal), {method: :get} %></button>
+<button><%= button_to  "See All Scandals", scandals_path, {method: :get} %></button>
+</div>
+</body>
+</html>
