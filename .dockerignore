@@ -2,3 +2,4 @@ node_modules
 vendor
 **/*.sqlite3
 tmp
+docker-compose.yml
