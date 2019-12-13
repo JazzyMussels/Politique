@@ -10,7 +10,7 @@ You can access this project by installing [Docker](https://www.docker.com/) here
 
 Then, simply run the following Docker command after cloning the repo
 
-``` docker compose up ```
+``` docker-compose up ```
 
 
 
