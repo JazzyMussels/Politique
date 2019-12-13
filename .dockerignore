@@ -1,0 +1,4 @@
+node_modules
+vendor
+**/*.sqlite3
+tmp

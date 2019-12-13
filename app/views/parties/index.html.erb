@@ -94,7 +94,7 @@
                         <li><a href="<%= parties_path %>">Parties</a></li>
                         <li><a href="<%= policies_path %>">Policies</a></li>
                         <li><a href="<%= scandals_path %>">Scandals</a></li>
-              <li><a href="<%= scandals_path %>">Debates</a></li>
+                    
                     </ul>
                 </div>
         <div class="blue-img">
@@ -103,8 +103,10 @@
                         <div class="card-heading"></div>
                         <div class="card-body">
                 <h2 class="title">Party Central</h2>
+    <% if session[:user_id] %>
 <h3><%= link_to "Jump To Your Profile Page", user_path(session[:user_id]), {:style=> 'color:#3470da'} %></h3>
-<br>
+<% end %>
+
 <h1>Click a link below to see information about a party.</h1><br>
 <% @parties.each do |p| %>
    <h3><%= link_to  p.name, party_path(p), {:style=> 'color:#3470da'} %><br></h3> 

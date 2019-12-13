@@ -1,3 +1,21 @@
+# from start page
+<div class="post">
+				<h2 class="title">Hear it from the horse's mouth</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>The next debate is right around the corner. Get information about who won and lost previous debates.</p>
+					<p class="links">
+            <a href="<%= debates_path %>" class="more">Debates</a>
+          </p>
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+    </div>
+
+    #from navBar
+    <%#= <li><a href="<%= scandals_path %>">Debates</a></li>%>
+
+
 <%=audio_tag("pokemon_song.mp3", autoplay: false, controls: true) %>
 <h1>A WILD DEBATE APPEARED!</h1>   
 <div id="battle_background">
@@ -18,7 +36,7 @@
         </div>
         <div class="col-lg-5 politician2action_image"></div>
         <div class="
-            <% if @game.option1 != 2%>
+            <% if @game.option1 != 2 %>
                 <%="a"%>
             <%else%>
                 <%= " running_mate_image" %>
